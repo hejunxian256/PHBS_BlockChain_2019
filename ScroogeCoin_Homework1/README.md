@@ -1,6 +1,9 @@
 # Homework 1 : ScroogeCoin
-**Name**: He Junxian  何隽贤 
+**Name**: He Junxian  何隽贤
+
 **ID**:1901212583
+
+Note: source codes are under the path src/main/java and codes of test cases are under src/test/java
 
 # Summary
 In this homework, we are required to implement the ScroogeCoin mechanism discussed in class. Provided
