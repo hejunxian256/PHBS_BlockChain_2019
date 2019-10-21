@@ -392,6 +392,7 @@ and block3 is the younger block. **_getMaxHeightBlock()_** function should be ab
 **Tx B_to_C**, **A_to_B** and **coinbase transaction of block2**.
 
 The following graph presents this test case more intuitively.
+
 ![EqualHeightBlock](EqualHeightBlock.png "EqualHeightBlock")
 
 #### **Code**
@@ -777,6 +778,9 @@ public void ControlBlockNum() throws Exception {
                 equalTo(true));
     }
 ```
+### Additional Comment
+It can be noted that in test1,4 5,6,7 and 9, besides the test purposes, we also verify that in the block chain we design, when a block is successfully added to the chain, **_MaxHeightBlock_**, **_MaxHeightUTXOPool_** and **_TransactionPool_** are updated correctly. Therefore, we are not going to test it seperately.
+
 
 ## Test results
 Our block chain design passed all 9 tests mentioned above. The following picture is a screenshot of Intellij Idea IDE.
