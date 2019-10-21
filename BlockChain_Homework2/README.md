@@ -31,7 +31,7 @@ public class BlockChainNode {
 ```
 ## Implementation of BlockChain class
 Our **_BlockChain_** class consists of: 
-* constructor **_BlockChain(Block genesisBlock)_**, which create an empty block chain with just a genesis block,
+* constructor **_BlockChain(Block genesisBlock)_**, which create a new block chain with just a genesis block,
 * **_getMaxHeightBlock()_**, which returns the highest block, i.e. the latest block of the longest branch,
 * **_getMaxHeightUTXOPool()_**, which returns the **_UTXOPool_** of the highest block, on top of which a new block will be mined,
 * **_getTransactionPool()_**, which returns the global transaction pool of the block chain,
