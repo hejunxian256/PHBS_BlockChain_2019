@@ -42,7 +42,7 @@ Our **_BlockChain_** class consists of:
 
 **_addBlock(Block block)_** is the key method of **_BlockChain_** class, therefore we present the code here along with detailed
 annotations. It can be noted that we set a limit to the number of blocks in the chain in order to prevent memory overflow.
-If the height of **_MaxHeighBlock_** is greater than the preset value **_MaxNum_**, blocks with height less than or equal to
+If the height of **_MaxHeightBlock_** is greater than the preset value **_MaxNum_**, blocks with height less than or equal to
 **_MaxHeight-MaxNum_** will be removed from the chain. 
 ```java
 public boolean addBlock(Block block) {
