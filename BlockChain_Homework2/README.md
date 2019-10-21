@@ -2,12 +2,12 @@
 **Name**: He Junxian  
 **ID**:1901212583
 
-# Summary
+## Summary
 In this homework, we are required to implement a node that’s part of a block-chain-based distributed 
 consensus protocol. Specifically, the mechanism we design can receive incoming transactions and blocks and maintain 
 an updated block chain.
 
-# BlockChainNode class
+## BlockChainNode class
 As required, we need to maintain a UXTO Pool as well as a height value corresponding to every block. The provided **_Block_**
 class is not enough for doing so, so we wrap the **_Block_** class into a new class called **_BlockChainNode_**.
 ```java
@@ -29,7 +29,7 @@ public class BlockChainNode {
     public UTXOPool getUtxoPool() { return utxoPool; }
 }
 ```
-# Implementation of BlockChain class
+## Implementation of BlockChain class
 Our **_BlockChain_** class consists of: 
 * constructor **_BlockChain(Block genesisBlock)_**, which create an empty block chain with just a genesis block,
 * **_getMaxHeightBlock()_**, which returns the highest block, i.e. the latest block of the longest branch,
@@ -123,7 +123,7 @@ public boolean addBlock(Block block) {
 **All related codes of **_BlockChain_** class along with detailed annotations are in _BlockChain.java_ file.**
 
 
-# Design of test suite
+## Design of test suite
 After we implement the **_BlockChain_** class, we need to verify if the chain we design works properly.
 Here we use JUnit to design and execute the test suite. 
 In this part, we will illustrate all 9 test functions one by one, including the function's purpose and 
