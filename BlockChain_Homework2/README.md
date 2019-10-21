@@ -312,7 +312,7 @@ Since in Homework1 we have already tested various kinds of invalid transactions,
 #### **Test Case and Analysis**
 * A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
 * A then transfers 25 coins to B, claiming its coinbase transaction as input. **(Tx A_to_B)**
-* A again transfers 25 coins to C, claiming its coinbase transaction as input. **(Tx_A_to_C)**
+* A again transfers 25 coins to C, claiming its coinbase transaction as input. **(Tx A_to_C)**
 * **Tx A_to_B** and **A_to_C** cause double spending problem.
 * D mined the next block(block1), the coinbase transaction of block1 goes to D.
 * **Tx A_to_B** and **A_to_C** are included in block1. Since the two transactions are double spending, they are invalid, 
