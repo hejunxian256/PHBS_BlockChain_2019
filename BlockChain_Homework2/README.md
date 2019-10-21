@@ -197,7 +197,7 @@ _prevHash_ from being added to the chain.
 
 #### **Test Case and Analysis**
 * A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
-* B mined the next block, so the coinbase transaction goes to B, but the _prevHash_ of B's block is different from the hash
+* B mined the next block, but the _prevHash_ of B's block is different from the hash
 of genesis block, so B's block should not be added to the chain due to wrong _prevHash_.
 * Only when the _prevHash_ of B's block is the hash of genesis block, B's block can be added to the chain.
 
@@ -243,7 +243,7 @@ of genesis block, so B's block should not be added to the chain due to wrong _pr
 genesis block.
 
 #### **Test Case and Analysis**
-* A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
+* A mined the genesis block, so the coinbase transaction of genesis block goes to A. We create a new block chain with the genesis block.
 * A then transfers 25 coins to B, claiming its coinbase transaction as input. **(Tx A_to_B)**
 * B mined the next block(block1), so the coinbase transaction of block1 goes to B, and **Tx A_to_B** is included in block1.
 * block1 is then added on top of the genesis block(the current highest block).
@@ -310,7 +310,7 @@ public void SpendCoinBaseTx() throws Exception {
 Since in Homework1 we have already tested various kinds of invalid transactions, here for simplicity we only consider double spending.
 
 #### **Test Case and Analysis**
-* A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
+* A mined the genesis block, so the coinbase transaction of genesis block goes to A. We create a new block chain with the genesis block.
 * A then transfers 25 coins to B, claiming its coinbase transaction as input. **(Tx A_to_B)**
 * A again transfers 25 coins to C, claiming its coinbase transaction as input. **(Tx A_to_C)**
 * **Tx A_to_B** and **A_to_C** cause double spending problem.
@@ -378,14 +378,14 @@ public void InvalidTxBlock() throws Exception {
 Also, if there are multiple blocks at the same height, the **_getMaxHeightBlock()_** function should be able to return the oldest block.
 
 #### **Test Case and Analysis**
-* A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
+* A mined the genesis block, so the coinbase transaction of genesis block goes to A. We create a new block chain with the genesis block.
 * A then transfers 25 coins to B, claiming its coinbase transaction as input. **(Tx A_to_B)**
 * B mined the next block(block1), the coinbase transaction of block1 goes to B.
 **Tx A_to_B** is included in block1 and block1 is added on top of the genesis block.
 * After block1 is added to the chain, B transfers 25 coins to C, claiming its coinbase transaction as input. **(Tx B_to_C)**
 * Also, B transfers 25 coins to D, claiming **Tx A_to_B** as input. **(Tx B_to_D)**
 * E mined the next block(block2), **Tx B_to_C** is included in block2, and block2 is added on top of block1.
-* F also mined another block(block3), **Tx B_to_D** is included in this block and block3 is also added on top of block1.
+* F also mined another block(block3), **Tx B_to_D** is included in block3 and block3 is also added on top of block1.
 * Now we have 2 blocks(block2 and block3) at the same height(**_height=3_**). block2 is added to the chain first, so block2 is the older block and block3 is the younger block. **_getMaxHeightBlock()_** function should be able to return the oldest block, i.e. block2.
 * _MaxHeightUXTOPool_ should be the UXTOPool of block2. There are 3 transactions in the UXTOPool of block2:
 **Tx B_to_C**, **A_to_B** and **coinbase transaction of block2**.
@@ -695,8 +695,7 @@ For simplicity of the test, we reset **_MaxNum = 5_**.
 #### **Test Case and Analysis**
 * A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
 * Then B, C, D, E and F in turn mined their blocks(block1-5) on top of the former block and add it to the chain.
-* Now the height of the chain is 6. Because we set the MaxNum=5, the chain will drop the block with **_height< 
-MaxHeight-MaxNum_** , i.e. the genesis block, so the chain no longer contains the genesis block.
+* Now the height of the chain is 6. Because we set the MaxNum=5, the chain will drop the block with **_height< MaxHeight-MaxNum_** , i.e. the genesis block, so the chain no longer contains the genesis block.
 * The number of UXTOs in _MaxHeightUTXOPool_ is 6. Although genesis block is removed from the chain, 
 the coinbase Tx of genesis block is still in _MaxHeightUTXOPool_.
 * G mined his block and adds it to the chain. The height of the chain is now 7 and the chain will drop the block with 
