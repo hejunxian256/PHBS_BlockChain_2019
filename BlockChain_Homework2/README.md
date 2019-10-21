@@ -168,7 +168,7 @@ the chain. Because a new genesis block won't be mined, another genesis block sho
 
 #### **Test Case and Analysis**
 * A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
-* B mined another genesis block, so the coinbase transaction goes to B.
+* B mined another genesis block.
 * B's genesis block should not be added to the existing block chain.
 
 #### **Code**
