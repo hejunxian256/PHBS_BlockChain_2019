@@ -131,12 +131,12 @@ the details of test cases we design.
 
 ### Test1: **GenesisBlock()**
 #### **Purpose**
-**_GenesisBlock()_** is to test whether we can create a new block chain with a genesis block
+**_GenesisBlock()_** is to test whether we can create a new block chain with a genesis block.
 
 #### **Test Case and Analysis**
 * A mined the genesis block, so the coinbase transaction goes to A.
 * Then we create a new block chain with the genesis block, so the highest block of the chain should be the genesis block
-and the _MaxHeightUXTOPool_ should include only 1 transaction: the coinbase transaction of genesis block
+and the _MaxHeightUXTOPool_ should include only 1 transaction: the coinbase transaction of genesis block.
 
 #### **Code**
 ```java
