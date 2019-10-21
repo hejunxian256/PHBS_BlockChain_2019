@@ -36,14 +36,14 @@ Our **_BlockChain_** class consists of:
 * **_getMaxHeightUTXOPool()_**, which returns the **_UTXOPool_** of the highest block, on top of which a new block will be mined,
 * **_getTransactionPool()_**, which returns the global transaction pool of the block chain,
 * **_addBlock(Block block)_**, which adds a block to the block chain if it satisfies following 2 conditions:
-  * the height of the block is greater than _MaxHeight-CUT_OFF_AGE_, 
+  * the height of the block is greater than **_MaxHeight-CUT_OFF_AGE_**, 
   * all transactions included in the block are valid.  
 * **_addTransaction(Transaction tx)_**, which adds a new transaction to the global transaction pool.
 
 **_addBlock(Block block)_** is the key method of **_BlockChain_** class, therefore we present the code here along with detailed
 annotations. It can be noted that we set a limit to the number of blocks in the chain in order to prevent memory overflow.
 If the height of **_MaxHeighBlock_** is greater than the preset value **_MaxNum_**, blocks with height less than
-_MaxHeight-MaxNum_ will be removed from the chain. 
+**_MaxHeight-MaxNum_** will be removed from the chain. 
 ```java
 public boolean addBlock(Block block) {
         // a valid block that can be added to the block chain should satisfy following conditions:
