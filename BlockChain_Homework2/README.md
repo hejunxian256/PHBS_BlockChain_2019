@@ -42,7 +42,7 @@ Our **_BlockChain_** class consists of:
 
 **_addBlock(Block block)_** is the key method of **_BlockChain_** class, therefore we present the code here along with detailed
 annotations. It can be noted that we set a limit to the number of blocks in the chain in order to prevent memory overflow.
-If the height of **_MaxHeighBlock_** is greater than the preset value **_MaxNum_**, blocks with height less than
+If the height of **_MaxHeighBlock_** is greater than the preset value **_MaxNum_**, blocks with height less than or equal to
 **_MaxHeight-MaxNum_** will be removed from the chain. 
 ```java
 public boolean addBlock(Block block) {
@@ -386,8 +386,7 @@ Also, if there are multiple blocks at the same height, the **_getMaxHeightBlock(
 * Also, B transfers 25 coins to D, claiming **Tx A_to_B** as input. **(Tx B_to_D)**
 * E mined the next block(block2), **Tx B_to_C** is included in block2, and block2 is added on top of block1.
 * F also mined another block(block3), **Tx B_to_D** is included in this block and block3 is also added on top of block1.
-* Now we have 2 blocks(block2 and block3) at the same height(_height=3_). block2 is added to the chain first, so block2 is the older block 
-and block3 is the younger block. **_getMaxHeightBlock()_** function should be able to return the oldest block, i.e. block2.
+* Now we have 2 blocks(block2 and block3) at the same height(**_height=3_**). block2 is added to the chain first, so block2 is the older block and block3 is the younger block. **_getMaxHeightBlock()_** function should be able to return the oldest block, i.e. block2.
 * _MaxHeightUXTOPool_ should be the UXTOPool of block2. There are 3 transactions in the UXTOPool of block2:
 **Tx B_to_C**, **A_to_B** and **coinbase transaction of block2**.
 
@@ -503,7 +502,7 @@ public void EqualHeightBlock() throws Exception {
 #### **Purpose**
 **_BlockChainReorganization()_** to test whether our chain can deal with reorganization properly. 
 We use the situation implemented in Test6.
-In Test6, we have 2 blocks(block2 and block3) at the same height(_height=3_), block2 is the oldest block, so chain 
+In Test6, we have 2 blocks(block2 and block3) at the same height(**_height=3_**), block2 is the oldest block, so chain 
 **{genesis -> block1 -> block2}** is the original main branch.
 Under normal circumstance, new block will be added on top of block2.
 However, if someone mined his new block(block4) and adds it on top of block3,
@@ -511,7 +510,7 @@ then chain **{genesis -> block1 -> block3 -> block4}** will become the new main 
 transactions in block2 will get lost.
 
 #### **Test Case and Analysis**
-* At the end of Test6, we have 2 blocks(block2 and block3) at the same height(_height=3_), block2 is the oldest block, so chain 
+* At the end of Test6, we have 2 blocks(block2 and block3) at the same height(**_height=3_**), block2 is the oldest block, so chain 
   **{genesis -> block1 -> block2}** is the original main branch.
 * G mined his new block(block4), and he adds block4 on top of block3.
 * Now chain **{genesis -> block1 -> block3 -> block4}** becomes the new longest branch.
@@ -630,15 +629,15 @@ public void BlockChainReorganization() throws Exception {
 ### Test8: HeightCondition()
 #### **Purpose**
 **_HeightCondition()_** is to test whether we can prevent a new block which does not satisfy the height condition from being added to the chain.
-For simplicity of the test, we reset _CUT_OFF_AGE = 2_.
+For simplicity of the test, we reset **_CUT_OFF_AGE = 2_**.
 
 #### **Test Case and Analysis**
 * A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
 * Then B, C, D and E in turn mined their blocks(block1-4) on top of the former block and add it to the chain.
 * Now we have 5 blocks in the chain and _MaxHeight_ is 5.
 * F mined a new block(block5) and wants to add it to the chain on top of block1, 
-but the height of block5 is 3(<= _MaxHeight-CUT_OFF_AGE_), so block5 should not be added to the chain.
-* G mined a new block(block6) and wants to add it to the chain on top of block2. The height of block6 is 4(> _MaxHeight-CUT_OFF_AGE_),
+but the height of block5 is 3(<= **_MaxHeight-CUT_OFF_AGE_**), so block5 should not be added to the chain.
+* G mined a new block(block6) and wants to add it to the chain on top of block2. The height of block6 is 4(>**_MaxHeight-CUT_OFF_AGE_**),
 so block6 can be added to the chain.
 
 #### **Code**
@@ -691,13 +690,13 @@ public void HeightCondition() throws Exception {
 ### Test9: ControlBlockNum()
 #### **Purpose**
 **_ControlBlockNum()_** is to test whether our mechanism can limit the number of blocks in order to avoid memory outflow.
-For simplicity of the test, we reset MaxNum = 5.
+For simplicity of the test, we reset **_MaxNum = 5_**.
 
 #### **Test Case and Analysis**
 * A mined the genesis block, so the coinbase transaction goes to A. We create a new block chain with the genesis block.
 * Then B, C, D, E and F in turn mined their blocks(block1-5) on top of the former block and add it to the chain.
-* Now the height of the chain is 6. Because we set the MaxNum=5, the chain will drop the block with _height< 
-MaxHeight-MaxNum_, i.e. the genesis block, so the chain no longer contains the genesis block.
+* Now the height of the chain is 6. Because we set the MaxNum=5, the chain will drop the block with **_height< 
+MaxHeight-MaxNum_** , i.e. the genesis block, so the chain no longer contains the genesis block.
 * The number of UXTOs in _MaxHeightUTXOPool_ is 6. Although genesis block is removed from the chain, 
 the coinbase Tx of genesis block is still in _MaxHeightUTXOPool_.
 * G mined his block and adds it to the chain. The height of the chain is now 7 and the chain will drop the block with 
