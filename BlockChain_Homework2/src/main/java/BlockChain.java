@@ -2,12 +2,11 @@
 // You should not have all the blocks added to the block chain in memory 
 // as it would cause a memory overflow.
 
-import org.w3c.dom.Node;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.w3c.dom.Node;
 
 public class BlockChain {
     public static int CUT_OFF_AGE = 10;
