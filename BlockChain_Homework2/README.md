@@ -249,7 +249,7 @@ genesis block.
 * block1 is then added on top of the genesis block(the current highest block).
 * After block1 is added to the chain, **Tx A_to_B** is removed from _TransactionPool_, so _TransactionPool_
  should have 0 transaction.
-* After block1 is added to the chain, _MaxHeightUTXOPool_ should include 2 UXTOs: coinbase transaction of block1 and 
+* After block1 is added to the chain, _MaxHeightUTXOPool_ should include 2 UXTOs: **coinbase transaction of block1** and 
 **Tx A_to_B**
 
 #### **Code**
@@ -389,7 +389,7 @@ Also, if there are multiple blocks at the same height, the **_getMaxHeightBlock(
 * Now we have 2 blocks(block2 and block3) at the same height(_height=3_). block2 is added to the chain first, so block2 is the older block 
 and block3 is the younger block. **_getMaxHeightBlock()_** function should be able to return the oldest block, i.e. block2.
 * _MaxHeightUXTOPool_ should be the UXTOPool of block2. There are 3 transactions in the UXTOPool of block2:
-**Tx B_to_C**, **A_to_B** and coinbase transaction of block2.
+**Tx B_to_C**, **A_to_B** and **coinbase transaction of block2**.
 
 The following graph presents this test case more intuitively.
 ![EqualHeightBlock](EqualHeightBlock.png "EqualHeightBlock")
@@ -515,7 +515,7 @@ transactions in block2 will get lost.
 * G mined his new block(block4), and he adds block4 on top of block3.
 * Now chain **{genesis -> block1 -> block3 -> block4}** becomes the new longest branch.
 * The _MaxHeightUXTOPool_ should be the UXTOPool of block4. There are 4 transactions in the UXTOPool of block4:
-**Tx B_to_D**, coinbase transactions of block1,block3 and block4.
+**Tx B_to_D**, **coinbase transactions of block1,block3 and block4**.
 * Transactions in block2 get lost.
 
 The following graph presents this test case more intuitively.
