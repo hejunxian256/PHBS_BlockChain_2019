@@ -1,5 +1,5 @@
 ## A Block Chain Based Online Comment System——Comment Chain
-### Proposal of Final Project for Block Chain and Cryptocurrencies
+### _Proposal of Final Project for Block Chain and Cryptocurrencies_
 
 **Group Member:**  
 Shen Tingwei, He Junxian
